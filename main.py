@@ -9,8 +9,8 @@ from pydantic import BaseModel, EmailStr
 from datetime import datetime, timedelta
 from typing import Optional, List, Dict, Any
 from datetime import datetime, timedelta
-from google.oauth2 import id_token
-from google.auth.transport import requests
+# from google.oauth2 import id_token
+# from google.auth.transport import requests
 
 import jwt
 import bcrypt
