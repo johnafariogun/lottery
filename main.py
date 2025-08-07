@@ -33,9 +33,9 @@ GOOGLE_DISCOVERY_URL = "https://accounts.google.com/.well-known/openid_configura
 
 
 
-celery_broker = settings.celery_broker
-database_url = settings.database_url
-secret_key = settings.secret_key
+celery_broker = settings.CELERY_BROKER
+database_url = settings.DATABASE_URL
+secret_key = settings.SECRET_KEY
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
 
@@ -354,9 +354,9 @@ class GoogleAuthService:
     """Google OAuth authentication service."""
     
     def __init__(self):
-        self.client_id = settings.google_client_id 
-        self.client_secret = settings.google_client_secret
-        self.redirect_uri = settings.google_redirect_uri
+        self.client_id = settings.GOOGLE_CLIENT_ID 
+        self.client_secret = settings.GOOGLE_CLIENT_SECRET
+        self.redirect_uri = settings.GOOGLE_REDIRECT_URI
         
         if not all([self.client_id, self.client_secret]):
             raise ValueError("Google OAuth credentials not configured")
