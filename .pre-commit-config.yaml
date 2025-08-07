@@ -1,0 +1,31 @@
+repos:
+  - repo: https://github.com/python/black
+    rev: 24.4.0
+    hooks:
+      - id: black
+        args: [--line-length=88]
+        types: [python]
+        exclude: |
+          (?x)^( 
+            tests/|
+            test_.*\.py|
+            .*_test\.py|
+            alembic/versions/.*|
+            pycache/|
+            \.|
+            init\.py
+          )
+
+  - repo: local
+    hooks:
+      - id: commitlint
+        name: Commitlint
+        entry: npx --no-install commitlint --edit $1
+        language: system
+        stages: [commit-msg]
+
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.18.0
+    hooks:
+      - id: gitleaks
+        args: ["detect", "--no-banner", "--verbose"]
